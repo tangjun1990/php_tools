@@ -1,8 +1,11 @@
 # php_tools
 
-整理一些php开发中好用的工具
+## 整理一些php开发中好用的工具
 
-* git commit时自动检查你的php代码
+#### git commit时自动检查你的php代码
+
+上周公司有个自信boy提交代码时没留意，误将语法错误的代码上线了，造成了严重的线上事故，
+所以考虑如何降低代码的风险，动手撸了一整天，总结了以下方法：
 
 当你在命令行git commit你的代码时，以下操作可以帮你自动扫描代码风格和逻辑。
 
@@ -35,3 +38,5 @@
         2.~/.composer/vendor/bin/phpmd dirOrFile text codesize,unusedcode,naming
 
     6.最重要的来了，那就是针对检查结果改代码，改代码，改代码
+    
+后记：当然，好的方式是在jenkins build的时候执行上述操作，不过，公司现有的代码。。。。你懂的^_^
