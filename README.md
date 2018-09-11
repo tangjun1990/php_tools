@@ -24,7 +24,7 @@
 
     3.编写git pre-commit钩子
 
-        1. vim .git/hooks/pre-commit，加入脚本内容： （注意修改脚本中的目录哟！）
+        1. vim .git/hooks/pre-commit，加入脚本内容：https://github.com/tangjun1990/php_tools/blob/master/pre-commit （注意修改脚本中的目录哟！）
 
         2. chmod +x .git/hooks/pre-commit
 
