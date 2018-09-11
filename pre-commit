@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+  
+PHP_CS="/Users/tangjun1/.composer/vendor/bin/phpcs"
+PHP_MD="/Users/tangjun1/.composer/vendor/bin/phpmd"
+HAS_PHP_CS=false
+HAS_PHP_MD=false
+
+if [ -x /Users/tangjun1/.composer/vendor/bin/phpcs ]; then
+    HAS_PHP_CS=true
+fi
+
+if [ -x /Users/tangjun1/.composer/vendor/bin/phpmd ]; then
+    HAS_PHP_MD=true
+fi
+
+if $HAS_PHP_CS; then
+    git status --porcelain | grep -e '^[AM]\(.*\).php$' | cut -c 3- | while read line; do
+        $PHP_CS "$line" --standard=PSR2;
+        git add "$line";
+    done
+else
+    echo ""
+    echo "php-cs was not found, please run:"
+    echo ""
+    echo "  composer global require squizlabs/php_codesniffer=*"
+    echo ""
+fi
+
+if $HAS_PHP_MD; then
+    git status --porcelain | grep -e '^[AM]\(.*\).php$' | cut -c 3- | while read line; do
+        $PHP_MD "$line" text codesize,unusedcode,naming;
+        git add "$line";
+    done
+else
+    echo ""
+    echo "php-md was not found, please run:"
+    echo ""
+    echo "  composer global require phpmd/phpmd"
+    echo ""
+fi
