@@ -2,7 +2,7 @@
 
 整理一些php开发中好用的工具
 
-* 一 git commit时自动检查你的php代码
+* git commit时自动检查你的php代码
 
 当你在命令行git commit你的代码时，以下操作可以帮你自动扫描代码风格和逻辑。
 
